@@ -1,8 +1,9 @@
 'use strict';
 
-const adder = (value) => {
-  const add = (a) => {
-    value += a;
+const adder = (initial) => {
+  let value = initial;
+  const add = (delta) => {
+    value += delta;
     if (value >= add.maxValue) add.maxEvent(value);
     return add;
   };
@@ -20,7 +21,7 @@ const maxReached = (value) => {
   console.log('max value reached, value: ' + value);
 };
 
-const a1 = adder(10).max(100, maxReached)(-5);
+const a1 = adder(10).max(100, maxReached)(-12);
 
 a1(25);
 a1(50);

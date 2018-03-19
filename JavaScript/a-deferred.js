@@ -17,10 +17,8 @@ const conferences = getConferences();
 
 console.log(conferences);
 
-conferences.data(5);
-
-/*conferences.data((list) => {
+conferences.data((list) => {
   console.log(list);
-});*/
+});
 
 console.log('end');

@@ -27,7 +27,7 @@ const adder = (value) => {
 const maxReached = (err, value) => {
   if (err) {
     console.log('value: ' + value);
-    throw err;
+    //throw err;
   }
 };
 

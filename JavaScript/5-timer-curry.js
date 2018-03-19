@@ -14,7 +14,7 @@ const fn = () => {
 const setTimeoutCallbackLast = (timeout, fn) => setTimeout(fn, timeout);
 
 const timer = curry(setTimeoutCallbackLast);
-timer(5000)(fn);
+timer(2000)(fn);
 
-const timer5s = timer(5000);
+const timer5s = timer(2000);
 timer5s(fn);
