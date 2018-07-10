@@ -8,4 +8,4 @@ const print = (err, data) => {
 
 const fileName = './1-callback.js';
 
-fs.readFile(fileName, print);
+fs.readFile(fileName, 'utf8', print);
