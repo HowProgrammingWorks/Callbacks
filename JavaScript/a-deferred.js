@@ -17,7 +17,7 @@ const conferences = getConferences();
 
 console.log(conferences);
 
-conferences.data((list) => {
+conferences.data(list => {
   console.log(list);
 });
 

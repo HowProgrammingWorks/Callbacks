@@ -4,11 +4,11 @@ const events = require('events');
 
 const emitter = new events.EventEmitter();
 
-emitter.on('new city', (city) => {
+emitter.on('new city', city => {
   console.log('Emitted city: ' + city);
 });
 
-emitter.on('data', (array) => {
+emitter.on('data', array => {
   console.log(array.reduce((a, b) => a + b));
 });
 
