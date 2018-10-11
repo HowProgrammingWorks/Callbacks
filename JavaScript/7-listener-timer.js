@@ -2,6 +2,7 @@
 
 const iterate = (array, listener) => {
   let counter = 0;
+  // setImmediate or setTimeout(0) or process.nextTick
   setInterval(() => {
     listener(array[counter++]);
     if (counter >= array.length) counter = 0;
@@ -10,6 +11,6 @@ const iterate = (array, listener) => {
 
 const cities = ['Kiev', 'London', 'Beijing'];
 
-const fn = city => console.log('Next city: ' + city);
+const print = city => console.log('Next city:', city);
 
-iterate(cities, fn);
+iterate(cities, print);

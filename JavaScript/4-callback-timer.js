@@ -4,4 +4,6 @@ const fn = () => {
   console.log('Callback from from timer');
 };
 
-setTimeout(fn, 5000);
+const timeout = (interval, fn) => setTimeout(fn, interval);
+
+timeout(5000, fn);

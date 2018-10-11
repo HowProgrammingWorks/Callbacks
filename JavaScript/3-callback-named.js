@@ -2,10 +2,11 @@
 
 const fs = require('fs');
 
-const print = (err, data) => {
-  console.log({ lines: data.toString().split('\n').length });
+const print = (fileName, err, data) => {
+  console.log({ lines: data.split('\n').length });
 };
 
 const fileName = './1-callback.js';
 
-fs.readFile(fileName, 'utf8', print);
+const callback = print.bind(null, fileName);
+fs.readFile(fileName, 'utf8', callback);

@@ -7,7 +7,8 @@ const adder = value => {
     value += a;
     if (value >= add.maxValue) {
       setImmediate(() => {
-        add.maxEvent(new Error('max value reached'), value);
+        const err = new Error('max value reached');
+        add.maxEvent(err, value);
       });
     }
     return add;
@@ -25,10 +26,8 @@ const adder = value => {
 
 // error-first
 const maxReached = (err, value) => {
-  if (err) {
-    console.log('value: ' + value);
-    //throw err;
-  }
+  if (err) throw err;
+  console.log('value:', value);
 };
 
 try {

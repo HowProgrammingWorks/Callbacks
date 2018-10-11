@@ -11,10 +11,10 @@ const fn = () => {
   console.log('Callback from from timer');
 };
 
-const setTimeoutCallbackLast = (timeout, fn) => setTimeout(fn, timeout);
+const timeout = (interval, fn) => setTimeout(fn, interval);
 
-const timer = curry(setTimeoutCallbackLast);
+const timer = curry(timeout);
 timer(2000)(fn);
 
-const timer5s = timer(2000);
-timer5s(fn);
+const timer2s = timer(2000);
+timer2s(fn);

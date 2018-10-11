@@ -3,7 +3,7 @@
 const getConferences = () => {
   let onDone = null;
   const deferred = {
-    data: callback => onDone = callback
+    onData: callback => onDone = callback
   };
   setTimeout(() => {
     if (onDone) onDone(['Tehran', 'Yalta', 'Potsdam']);
@@ -17,7 +17,7 @@ const conferences = getConferences();
 
 console.log(conferences);
 
-conferences.data(list => {
+conferences.onData(list => {
   console.log(list);
 });
 

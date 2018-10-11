@@ -8,8 +8,8 @@ const iterate = (array, listener) => {
 
 const cities = ['Kiev', 'London', 'Beijing'];
 
-const each = city => {
-  console.log('City: ' + city);
+const print = city => {
+  console.log('City:', city);
 };
 
-iterate(cities, each);
+iterate(cities, print);
