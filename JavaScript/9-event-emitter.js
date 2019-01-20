@@ -1,8 +1,8 @@
 'use strict';
 
-const events = require('events');
+const { EventEmitter } = require('events');
 
-const emitter = new events.EventEmitter();
+const emitter = new EventEmitter();
 
 emitter.on('new city', city => {
   console.log('Emitted city:', city);
