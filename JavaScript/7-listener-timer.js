@@ -5,7 +5,7 @@ const iterate = (array, listener) => {
   // setImmediate or setTimeout(0) or process.nextTick
   setInterval(() => {
     listener(array[counter++]);
-    if (counter >= array.length) counter = 0;
+    if (counter === array.length) counter = 0;
   }, 1000);
 };
 
