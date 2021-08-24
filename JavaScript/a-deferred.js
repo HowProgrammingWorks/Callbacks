@@ -13,7 +13,7 @@ class Deferred {
     this.value = value;
     this.finished = true;
     const event = this.events['done'];
-    if (event) event.forEach(fn => fn(value));
+    if (event) event.forEach((fn) => fn(value));
   }
 
   reject(err) {
@@ -21,7 +21,7 @@ class Deferred {
     this.error = err;
     this.finished = true;
     const event = this.events['fail'];
-    if (event) event.forEach(fn => fn(err));
+    if (event) event.forEach((fn) => fn(err));
   }
 
   done(fn) {
@@ -44,10 +44,10 @@ class Deferred {
 // Usage
 
 const conferences = new Deferred()
-  .done(list => {
+  .done((list) => {
     console.log(list);
   })
-  .fail(err => {
+  .fail((err) => {
     throw err;
   });
 

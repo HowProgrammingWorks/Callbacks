@@ -2,8 +2,8 @@
 
 // Implementation
 
-const adder = value => {
-  const add = a => {
+const adder = (value) => {
+  const add = (a) => {
     value += a;
     if (value >= add.maxValue) {
       setImmediate(() => {

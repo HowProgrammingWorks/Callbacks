@@ -1,8 +1,8 @@
 'use strict';
 
-const adder = initial => {
+const adder = (initial) => {
   let value = initial;
-  const add = delta => {
+  const add = (delta) => {
     value += delta;
     if (value >= add.maxValue) add.maxEvent(value);
     return add;
@@ -17,7 +17,7 @@ const adder = initial => {
 
 // Usage
 
-const maxReached = value => {
+const maxReached = (value) => {
   console.log('max value reached, value: ' + value);
 };
 
