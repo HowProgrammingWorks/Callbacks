@@ -8,7 +8,7 @@ const curry = (fn, ...par) => {
 };
 
 const fn = () => {
-  console.log('Callback from from timer');
+  console.log('Callback from timer');
 };
 
 const timeout = (interval, fn) => setTimeout(fn, interval);
