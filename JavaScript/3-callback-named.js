@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs');
+const fs = require('node:fs');
 
 const print = (fileName, err, data) => {
   console.log({ lines: data.split('\n').length });
