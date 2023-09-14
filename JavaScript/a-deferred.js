@@ -25,7 +25,7 @@ class Deferred {
   }
 
   done(fn) {
-    if (this.finished) return;
+    if (this.finished) return false;
     const event = this.events['done'];
     if (event) event.push(fn);
     else this.events['done'] = [fn];
@@ -33,7 +33,7 @@ class Deferred {
   }
 
   fail(fn) {
-    if (this.finished) return;
+    if (this.finished) return false;
     const event = this.events['fail'];
     if (event) event.push(fn);
     else this.events['fail'] = [fn];
