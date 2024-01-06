@@ -3,7 +3,7 @@
 const fs = require('node:fs');
 
 const print = (fileName, err, data) => {
-  console.log({ lines: data.split('\n').length });
+  console.log({ fileName, lines: data.split('\n').length });
 };
 
 const fileName = './1-callback.js';
