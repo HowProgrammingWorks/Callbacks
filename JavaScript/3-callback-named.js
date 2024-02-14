@@ -2,11 +2,26 @@
 
 const fs = require('node:fs');
 
-const print = (fileName, err, data) => {
-  console.log({ lines: data.split('\n').length });
-};
+{
+  const print = (file, err, data) => {
+    console.log({ file, lines: data.split('\n').length });
+  };
 
-const fileName = './1-callback.js';
+  const fileName = './1-callback.js';
 
-const callback = print.bind(null, fileName);
-fs.readFile(fileName, 'utf8', callback);
+  const callback = print.bind(null, fileName);
+  fs.readFile(fileName, 'utf8', callback);
+}
+
+// Callback with closure
+
+{
+  const print = (file) => (err, data) => {
+    console.log({ file, lines: data.split('\n').length });
+  };
+
+  const fileName = './1-callback.js';
+
+  const callback = print(fileName);
+  fs.readFile(fileName, 'utf8', callback);
+}
