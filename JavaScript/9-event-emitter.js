@@ -5,7 +5,7 @@ const { EventEmitter } = require('node:events');
 const emitter = new EventEmitter();
 
 emitter.on('new city', (city) => {
-  console.log('Emitted city:', city);
+  console.log(`Emitted city: ${city}`);
 });
 
 emitter.on('data', (array) => {

@@ -11,6 +11,6 @@ const iterate = (array, listener) => {
 
 const cities = ['Kiev', 'London', 'Beijing'];
 
-const print = (city) => console.log('Next city:', city);
+const print = (city) => console.log(`Next city: ${city}`);
 
 iterate(cities, print);

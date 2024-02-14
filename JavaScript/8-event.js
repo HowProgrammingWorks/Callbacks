@@ -18,7 +18,7 @@ const adder = (initial) => {
 // Usage
 
 const maxReached = (value) => {
-  console.log('max value reached, value: ' + value);
+  console.log(`Max value reached, value: ${value}`);
 };
 
 const a1 = adder(10).max(100, maxReached)(-12);
