@@ -12,3 +12,11 @@ const sum = (a, b, callback) => callback(a + b);
 sum(2, 3, (res) => {
   console.log(`sum(2, 3) = ${res}`);
 });
+
+// Callback-last-error-first
+
+const total = (a, b, callback) => callback(null, a + b);
+
+total(2, 3, (error, res) => {
+  console.log(`sum(2, 3) = ${res}`);
+});
