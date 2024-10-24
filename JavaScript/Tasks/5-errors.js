@@ -30,12 +30,13 @@ const calculateSubtotal = (goods, callback) => {
 const calculateTotal = (order, callback) => {
   const expenses = new Map();
   let total = 0;
+  const calc = (groupName) => (amount) => {
+    total += amount;
+    expenses.set(groupName, amount);
+  };
   for (const groupName in order) {
     const goods = order[groupName];
-    calculateSubtotal(goods, (amount) => {
-      total += amount;
-      expenses.set(groupName, amount);
-    });
+    calculateSubtotal(goods, calc(groupName));
     if (total > MAX_PURCHASE) {
       throw new Error('Total is above the limit');
     }

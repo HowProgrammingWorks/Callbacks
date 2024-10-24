@@ -37,7 +37,7 @@ try {
   a1(75);
   a1(100);
   a1(-200)(50)(30);
-} catch (e) {
+} catch {
   console.log('Never');
 }
 

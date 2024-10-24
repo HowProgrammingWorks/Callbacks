@@ -30,13 +30,18 @@ const writeReport = (path, data, callback) => {
 // Callback hell example
 
 readConfig('config.json', (error, config) => {
+  if (error) console.error(error);
   const min = config.population.minimalLimit;
   const sql = `select * from cities where size > ${min}`;
   selectFromDb(sql, (error, cities) => {
+    if (error) console.error(error);
     const url = 'http://domain.name/api';
     apiRequest(url, cities, (error, stats) => {
+      if (error) console.error(error);
       generateReport(cities, stats, (error, data) => {
+        if (error) console.error(error);
         writeReport('README.md', data, (error, res) => {
+          if (error) console.error(error);
           if (res.success) console.log('All done!');
         });
       });

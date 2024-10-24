@@ -17,6 +17,7 @@ const fs = require('node:fs');
 
 {
   const print = (file) => (err, data) => {
+    if (err) console.error(err);
     console.log({ file, lines: data.split('\n').length });
   };
 

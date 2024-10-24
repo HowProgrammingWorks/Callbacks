@@ -32,6 +32,7 @@ const timer = setInterval(() => {
 const fs = require('node:fs');
 
 fs.readFile('./1-callback.js', 'utf8', (err, data) => {
+  if (err) console.error(err);
   console.log({ lines: data.split('\n').length });
 });
 

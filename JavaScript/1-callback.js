@@ -18,5 +18,6 @@ sum(2, 3, (res) => {
 const total = (a, b, callback) => callback(null, a + b);
 
 total(2, 3, (error, res) => {
+  if (error) console.error(error);
   console.log(`sum(2, 3) = ${res}`);
 });
