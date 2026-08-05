@@ -14,7 +14,7 @@ const selectFromDb = (query, callback) => {
 
 const apiRequest = (url, cities, callback) => {
   console.log('(3) Data from web api');
-  callback(null, { stats: ['some sata'] });
+  callback(null, { stats: ['some data'] });
 };
 
 const generateReport = (cities, stats, callback) => {
