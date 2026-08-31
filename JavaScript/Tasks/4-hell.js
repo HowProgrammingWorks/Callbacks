@@ -47,16 +47,22 @@ const budget = (limit) => {
 
 const wallet = budget(1650);
 
-getPurchase((purchase) => {
-  let amount = 0;
-  iterateGroups(purchase, (group) => {
-    groupTotal(group, (subtotal) => {
-      wallet.withdraw(subtotal, (success) => {
-        if (success) amount += subtotal;
-        wallet.rest((balance) => {
-          console.log({ success, amount, subtotal, balance });
-        });
-      });
+const processGroupTotal = (amount) => (subtotal) => {
+  wallet.withdraw(subtotal, (success) => {
+    if (success) amount += subtotal;
+    wallet.rest((balance) => {
+      console.log({ success, amount, subtotal, balance });
     });
   });
-});
+}
+
+const processIterateGroups = (amount) =>(group) => {
+    groupTotal(group, processGroupTotal(amount) );
+}
+
+const processPurchase = (purchase) => {
+  let amount = 0;
+  iterateGroups(purchase, processIterateGroups(amount));
+}
+
+getPurchase(processPurchase);

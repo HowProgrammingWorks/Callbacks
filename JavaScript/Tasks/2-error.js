@@ -8,7 +8,10 @@ const total = (items, callback) => {
   for (const item of items) {
     result += item.price;
   }
-  callback(result);
+  if(result < 0){
+    callback(new Error("Price is negative"), result)
+  }  
+  callback(null, result);
 };
 
 const electronics = [
@@ -17,6 +20,10 @@ const electronics = [
   { name: 'HDMI cable', price: 10 },
 ];
 
-total(electronics, (money) => {
+total(electronics, (err, money) => {
+  if(err){
+    console.error(err.message, money)
+    throw err
+  }
   console.log({ money });
 });

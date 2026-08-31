@@ -14,34 +14,39 @@ const calculateSubtotal = (goods, callback) => {
   let amount = 0;
   for (const item of goods) {
     if (typeof item.name !== 'string') {
-      throw new Error('Noname in item in the bill');
+     return callback(new Error('Noname in item in the bill')) 
     }
     if (typeof item.price !== 'number') {
-      throw new Error(`${item.name} price expected to be number`);
+      return callback(new Error(`${item.name} price expected to be number`));
     }
     if (item.price < 0) {
-      throw new Error(`Negative price for ${item.name}`);
+      return callback(new Error(`Negative price for ${item.name}`));
     }
     amount += item.price;
   }
-  callback(amount);
+  callback(null, amount);
 };
 
 const calculateTotal = (order, callback) => {
   const expenses = new Map();
   let total = 0;
-  const calc = (groupName) => (amount) => {
-    total += amount;
-    expenses.set(groupName, amount);
+  const calc = (groupName) => (err, amount) => {
+    if(err){
+      return callback(err);
+    } else {
+      total += amount;
+      expenses.set(groupName, amount);
+    }
+    
   };
   for (const groupName in order) {
     const goods = order[groupName];
     calculateSubtotal(goods, calc(groupName));
     if (total > MAX_PURCHASE) {
-      throw new Error('Total is above the limit');
+      return callback(new Error('Total is above the limit'));
     }
   }
-  return callback({ total, expenses });
+  return callback(null, { total, expenses });
 };
 
 const purchase = {
@@ -56,12 +61,16 @@ const purchase = {
   ],
 };
 
-try {
+
   console.log(purchase);
-  calculateTotal(purchase, (bill) => {
-    console.log(bill);
+  calculateTotal(purchase, (err, bill) => {
+    
+    if(err){
+      console.log('Error detected');
+      console.error(err);
+    } else {
+       console.log(bill);
+    }
+   
   });
-} catch (error) {
-  console.log('Error detected');
-  console.error(error);
-}
+

@@ -16,17 +16,30 @@
 // { money: 1610 }
 // { money: 1610 }
 
-const total = (items, callback) => {
+const total = async (items, callback) => {
   let result = 0;
-  for (const item of items) {
-    console.log({ check: { item } });
-    if (item.price < 0) {
-      callback(new Error('Negative price is not allowed'));
-      return;
-    }
-    result += item.price;
-  }
-  callback(null, result);
+  let index = 0;
+  await new Promise((res, rej)=> {
+      const timerId = setInterval(()=>{
+        const item = items[index];
+        if(!item){
+          clearInterval(timerId)
+          res();
+          return
+        } 
+        console.log({ check: { item } });
+        if (item.price < 0) {
+          rej(new Error('Negative price is not allowed'));
+          clearInterval(timerId)
+          return;
+        }
+        result += item.price;
+        index+=1;
+      }, 1000)
+  
+ 
+  }).then(()=>callback(null, result)).catch(err=>callback(err))
+  
 };
 
 const electronics = [
